@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, inject } from "@angular/core";
+import { Component, computed, inject } from "@angular/core";
 import { TodoAppService } from "../../services/todo-app.service";
 import { FilterType } from "../../types/filter.enum";
 
@@ -12,4 +12,8 @@ import { FilterType } from "../../types/filter.enum";
 export class TodoFooterComponent {
   filterType = FilterType;
   todoAppService = inject(TodoAppService);
+
+  todoUncompletedList = computed(() => {
+    return this.todoAppService.todoList().filter((todo) => !todo.isDone);
+  });
 }

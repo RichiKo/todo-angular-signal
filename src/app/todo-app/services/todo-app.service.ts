@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { TodoModel } from "../types/todo.interface";
 import { FilterType } from "../types/filter.enum";
 
@@ -8,10 +8,6 @@ import { FilterType } from "../types/filter.enum";
 export class TodoAppService {
   todoList = signal<TodoModel[]>([]);
   todoFilter = signal<FilterType>(FilterType.ALL);
-
-  todoUncompletedList = computed(() => {
-    return this.todoList().filter((todo) => !todo.isDone);
-  });
 
   addNewTodo(text: string) {
     const newTodo: TodoModel = {
