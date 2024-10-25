@@ -1,0 +1,22 @@
+<section class="main">
+  <div class="toggle-all-container">
+    <input
+      id="toggle-all"
+      type="checkbox"
+      class="toggle-all"
+      [checked]="isAllChecked()"
+      (change)="toggleAll($event)"
+    />
+    <label for="toggle-all">Mark all as completed</label>
+  </div>
+  <ul class="todo-list">
+    @for (item of todoFilteredList(); track item.id) {
+    <todo-item
+      [todoItem]="item"
+      (toggleDoneEvent)="toggleDone($event)"
+      (removeEvent)="removeItem($event)"
+      (editTextEvent)="editItemText($event)"
+    ></todo-item>
+    }
+  </ul>
+</section>

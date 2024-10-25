@@ -1,0 +1,12 @@
+<header class="header">
+  <h1>Todos</h1>
+
+  <input
+    class="new-todo"
+    [placeholder]="'What needs to be done?'"
+    [value]="inputValue"
+    (keyup)="onInputChange($event)"
+    (keyup.enter)="save()"
+    #input
+  />
+</header>

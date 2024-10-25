@@ -1,0 +1,23 @@
+<li [class.completed]="todoItem.isDone" [class.editing]="isEdit">
+  @if(!isEdit) {
+  <div class="view" (dblclick)="isEdit = true">
+    <input
+      type="checkbox"
+      class="toggle"
+      [checked]="todoItem.isDone"
+      (change)="toggleDoneEvent.emit(todoItem.id)"
+    />
+    <label>{{ todoItem.text }}</label>
+    <button class="destroy" (click)="removeEvent.emit(todoItem.id)"></button>
+  </div>
+  } @else {
+  <input
+    type="text"
+    class="edit"
+    [value]="todoItem.text"
+    (keyup)="onEditItemText($event)"
+    (keyup.enter)="onUpdateText()"
+    (blur)="isEdit = false"
+  />
+  }
+</li>
