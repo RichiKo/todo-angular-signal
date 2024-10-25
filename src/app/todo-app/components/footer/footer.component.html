@@ -1,0 +1,35 @@
+<footer class="footer">
+  <span class="todo-count">
+    <strong>{{ todoUncompletedList().length }}</strong>
+    item left{{ todoUncompletedList().length != 1 ? "s" : "" }}
+  </span>
+  <ul class="filters">
+    <li>
+      <a
+        href="#"
+        [class.selected]="todoAppService.todoFilter() === filterType.ALL"
+        (click)="todoAppService.setFilter(filterType.ALL)"
+        >All</a
+      >
+    </li>
+    <li>
+      <a
+        href="#"
+        [class.selected]="todoAppService.todoFilter() === filterType.ACTIVE"
+        (click)="todoAppService.setFilter(filterType.ACTIVE)"
+        >Active</a
+      >
+    </li>
+    <li>
+      <a
+        href="#"
+        [class.selected]="todoAppService.todoFilter() === filterType.COMPLETED"
+        (click)="todoAppService.setFilter(filterType.COMPLETED)"
+        >Completed</a
+      >
+    </li>
+  </ul>
+  <button class="clear-completed" (click)="todoAppService.clearCompleted()">
+    Clear completed
+  </button>
+</footer>
